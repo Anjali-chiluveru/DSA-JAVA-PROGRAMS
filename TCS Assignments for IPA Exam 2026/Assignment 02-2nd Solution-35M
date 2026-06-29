@@ -1,0 +1,123 @@
+import java.util.*;
+class Laptop{
+    Laptop(int id,String brand,String os,double price,int rating){
+       this.laptopId=id;
+       this.brand=brand;
+       this.osType=os;
+       this.price=price;
+       this.rating=rating;  }
+   }
+int getLaptopId(){
+    return this.laptopId;
+}
+void setLapId(int laptopId){
+    this.laptopId=laptopId;
+}
+String getBrand(){
+    return this.brand;
+}
+void setBrand(String brand){
+    this.brand=brand;
+}
+String getOsType(){
+    return this.osType;
+}
+void setOsType(String osType){
+    this.osType=osType;
+}
+double getPrice(){
+    return this.price;
+}
+void setPrice(double price){
+    this.price=price;
+}
+int getRating(){
+    return this.rating;
+}
+void setRating(int rating){
+    this.rating=rating;
+}
+}
+class MyClass{
+    static int countOfLaptopByBrand(Laptop arr,String brand){
+        int count=0;
+         for(int i=0;i<arr.length;i++){
+             if(arr[i].getBrand().equalsIgnoreCase(brand) && arr[i].getRating()>3){
+                 count++;
+             }
+
+           }
+           if(count==0){
+                 return o;
+           }
+          else{
+              return  count;
+          }
+        }
+        static Laptop[] searchLaptopByOsType(Laptop[] arr,String os){
+             int count=0
+             for(int i=0;i<arr.length;i++){
+               if(arr[i].getOsType().equalsIgnoreCase(os)){
+                  count++;
+
+               }
+             }
+             if(count==0){
+               return 0;
+             }
+             Laptop result=new Laptop[count];
+             int s=0;
+             for(int i=0;i<arr.length;i++){
+                if(arr[i].getBrand().equalsIgnoreCase(os)){
+                    result[s]=arr[i];
+                    s++;
+                }
+             }
+             for (int i=0;i<result.length;i++){
+                for(int j=0;j<result.length-i-1;j++){
+                      if(result[j].getLaptopId()<result[j+1].getLaptopId()){
+                          Laptop temp=result[j];
+                          result[j]=result[j+1];
+                          result[j+1]=temp;
+                      }
+                }
+             }
+             return result;
+             }
+             public static void main(String[] args){
+                Scanner sc=new Scanner(System.in);
+                Laptop[] arr=new Laptop[4];
+                for(int i=0;i<4;i++){
+                    int id=sc.nextInt();
+
+                    sc.nextLine();
+                    String brand=sc.nextLine();
+                    String os=sc.nextInt();
+                    double price=nextInt();
+                    sc.nextLine();
+                    int rating=sc.nextInt();
+                    sc.nextLine();
+                     arr[i]=new Laptop(id,brand,os,price,rating);
+                }   
+                String brand=sc.nextLine();
+                String os=sc.nextLine();
+                int ans=countOfLaptopByOsType(arr,brand);
+                if(ans>0){
+                   System.out.println(ans);
+                 }
+                 else{
+                     System.out.println("The given brand is not available");
+                 }
+                 Laptop[] res=searchLaptopByOsType(arr,os);
+                 if(res!=null){
+                     for(int i=0;i<res.length;i++){
+                         System.out.println(res[i].getLaptopId());
+                         System.out.println(res.getRating());
+                     }
+                 }
+                 else{
+                    System.out.println("The given os is not available");
+                 } 
+             }
+                
+        }
